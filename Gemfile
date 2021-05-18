@@ -58,5 +58,20 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+# Display better error messages
+gem 'better_errors'
+
+# View tables in console
+gem 'table_print'
+
+# Compatibility with heroku
+gem 'jquery-rails'
+
+# Seeds fake
+gem 'faker'
+
+# hidden secret
+gem 'dotenv-rails'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
