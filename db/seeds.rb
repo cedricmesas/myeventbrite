@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "date"
+require 'faker'
 
 User.destroy_all
 Event.destroy_all
@@ -18,7 +18,6 @@ u = 10.times do
         description: Faker::Lorem.sentences(2).join,
         email:"@yopmail.com")
 end
-p u
 
 10.times do
     Event.create(
