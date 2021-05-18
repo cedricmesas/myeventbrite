@@ -7,7 +7,7 @@ class User < ApplicationRecord
     
     has_many :attendances
     has_many :events, through: :attendances
-    #has_many :organised_events, foreign_key: 'organizer', class_name: 'Event'
+    has_many :organised_events, foreign_key: 'organizer', class_name: 'Event'
     
     private
     def welcome_send

@@ -48,6 +48,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Test mail sending with letter_opener
+  gem 'letter_opener'
 end
 
 group :test do
@@ -57,6 +59,9 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+
+# package sendgrid
+gem 'sendgrid-ruby'
 
 # Display better error messages
 gem 'better_errors'
