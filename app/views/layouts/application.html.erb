@@ -7,9 +7,53 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
+<nav class="navbar bg-light navbar-fixed-top justify-content-between">
+	<%= link_to "Eventbrite", root_path, id: "logo", class: "logo" %>
+		<div class="navbar" id="navLinks">
+			<ul class=" nav navbar-nav navbar-left" style="flex-direction:row">
+				<li class="nav-item m-1">
+					<%= link_to "Home", root_path, :class => "nav-link" %>
+				</li>
+				<% if user_signed_in? %>
+					<li class="nav-item m-1">
+						<%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+					</li>
+					<li class="nav-item m-1">
+						<%= link_to "Create Event", new_event_path, :class => "nav-link" %>
+					</li>
+					<li class="nav-item m-1">
+						Voici ton email : <%= current_user.email %>
+					</li>
+
+					<li class="nav-item m-1">
+						<%= link_to "Edit email / password", edit_user_registration_path, :class => "nav-link" %>
+					</li>
+
+					<% else %>
+						<li class="nav-item m-1">
+							<%= link_to "Sign in", new_user_session_path, :class => "nav-link" %>
+						</li>
+
+						<li class="nav-item m-1">
+							<%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
+						</li>
+
+						<% end %>
+			</ul>
+		</div>
+</nav>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
