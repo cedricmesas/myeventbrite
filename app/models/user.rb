@@ -5,9 +5,9 @@ class User < ApplicationRecord
             :recoverable, :rememberable, :validatable
     
     after_create :welcome_send
-    #validates :first_name, presence: true
-    #validates :last_name, presence: true
-    #validates :encrypted_password, presence: true, length: { minimum: 5, maximum: 15 }
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :encrypted_password, presence: true, length: { minimum: 5, maximum: 15 }
     validates :email, presence: true, uniqueness: true, format: {with: /\A[^@\s]+@([^@\s]+.)+[^@\s]+\z/, message: 'email adress please'}
     
     has_many :attendances
