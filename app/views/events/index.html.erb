@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Hello, guy !</h1>
+            <p>Bienvenu sur le site My Fucking Eventbrite !</p>
+        </div>
+      </div>
 
-<h1>Events</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th colspan="7"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @events.each do |event| %>
-            <tr>
-                <td>Event info:</td>
-                <td><%= event.title %></td>
-                <td><%= event.duration %></td>
-                <td><%= event.location %></td>
-
-                <td><%= link_to "Show", event %></td>
+      <div class="container">
+      <% @events.each do |event| %>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+            
+                <h2><%= event.title %></h2>
+                <p><%= event.duration %></p>
+                <p><%= event.location %></p>
+                <p><a class="btn btn-secondary" href="#" role="button"><%= link_to "Show", event %>View details &raquo;</a></p>
+            </div>
+        </div>
+    <p id="notice"><%= notice %></p>
                 <td><%= link_to "Edit", edit_event_path(event) %></td>
                 <td><%= link_to "Destroy", event, method: :delete, data: { confirm: "Are you sure?" } %></td>
             </tr>
         <% end %>
     </tbody>
-    
+
 </table>
 
 <br>

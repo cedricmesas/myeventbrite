@@ -12,7 +12,7 @@ class Event < ApplicationRecord
     
     private
     
-    def multiple_5_and_positive?
+    def mult_5_and_positive?
         return true if self.duration % 5 == 0 && self.duration > 0
         false
     end
