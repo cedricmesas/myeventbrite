@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
     before_action :auth_user?
 
     def show
@@ -9,7 +9,7 @@ class UserController < ApplicationController
     
     def auth_user?
         unless User.find(params[:id]) == current_user
-            redirect_to events_path, alert: "Ce n'est pas votre profil !"
+            redirect_to events_path, alert: "T'es pas au bon endroit !"
         end
     end
 end
