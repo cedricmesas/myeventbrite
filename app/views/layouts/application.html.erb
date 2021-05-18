@@ -16,27 +16,32 @@
   </head>
 
   <body>
+
 <nav class="navbar bg-light navbar-fixed-top justify-content-between">
-	<%= link_to "Eventbrite", root_path, id: "logo", class: "logo" %>
+	<%= link_to "Myeventbrite", root_path, id: "logo", class: "logo" %>
 		<div class="navbar" id="navLinks">
 			<ul class=" nav navbar-nav navbar-left" style="flex-direction:row">
+
 				<li class="nav-item m-1">
 					<%= link_to "Home", root_path, :class => "nav-link" %>
 				</li>
-				<% if user_signed_in? %>
-					<li class="nav-item m-1">
-						<%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
-					</li>
-					<li class="nav-item m-1">
-						<%= link_to "Create Event", new_event_path, :class => "nav-link" %>
-					</li>
-					<li class="nav-item m-1">
-						Voici ton email : <%= current_user.email %>
-					</li>
+				
+          <% if user_signed_in? %>
+            <li class="nav-item m-1">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+            </li>
 
-					<li class="nav-item m-1">
-						<%= link_to "Edit email / password", edit_user_registration_path, :class => "nav-link" %>
-					</li>
+            <li class="nav-item m-1">
+              <%= link_to "Create Event", new_event_path, :class => "nav-link" %>
+            </li>
+
+            <li class="nav-item m-1">
+              Voici ton email : <%= current_user.email %>
+            </li>
+
+            <li class="nav-item m-1">
+              <%= link_to "Edit email / password", edit_user_registration_path, :class => "nav-link" %>
+            </li>
 
 					<% else %>
 						<li class="nav-item m-1">
@@ -47,8 +52,10 @@
 							<%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
 						</li>
 
-						<% end %>
+					<% end %>
+          
 			</ul>
+
 		</div>
 </nav>
       <p class="notice"><%= notice %></p>
