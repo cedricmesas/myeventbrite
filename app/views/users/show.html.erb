@@ -21,5 +21,29 @@
             </li>
         </ul>
     </div>
-    
+
+</div>
+
+<div class="container">
+    <ul class="list-group">
+        <li class="">
+            <%=button_to 'Changer mon mot de passe', new_user_password_path(current_user.id), method: 'get', class: 'btn btn-danger'%>
+        </li>
+
+        <li class="">
+            <a href=<%=edit_user_registration_path%> class="btn btn-danger">Modifier mes infos</a>
+        </li>
+
+        <li class="">
+            <a href="#" class="btn btn-danger">Modifier ma description</a>
+        </li>
+
+        <li class="">
+            <a href="#" class="btn btn-danger">Modifier mon prénom</a>
+        </li>
+
+        <li class="">
+            <a href="#" class="btn btn-danger">Modifier mon nom</a>
+        </li>
+    </ul>
 </div>
