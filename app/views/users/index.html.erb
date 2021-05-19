@@ -1,0 +1,7 @@
+<h1>User home</h1>
+
+<% @users.each do |user| %> 
+    <%= user.first_name %>
+    <a href="<%= user_path(user.id) %>" class="card-link btn btn-dark">Show</a>
+    <br>
+<% end %>  

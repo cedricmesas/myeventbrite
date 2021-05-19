@@ -17,46 +17,40 @@
 
   <body>
 
-<nav class="navbar bg-light navbar-fixed-top justify-content-between">
-	<%= link_to "My profil", user_path(current_user) %>
-		<div class="navbar" id="navLinks">
-			<ul class=" nav navbar-nav navbar-left" style="flex-direction:row">
+    <!-- Navbar -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">The Fucking Eventbrite</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-				<li class="nav-item m-1">
-					<%= link_to "Home", root_path, :class => "nav-link" %>
-				</li>
-				
-          <% if user_signed_in? %>
-            <li class="nav-item m-1">
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
-            </li>
-
-            <li class="nav-item m-1">
-              <%= link_to "Create Event", new_event_path, :class => "nav-link" %>
-            </li>
-
-            <li class="nav-item m-1">
-              Voici ton email : <%= current_user.email %>
-            </li>
-
-            <li class="nav-item m-1">
-              <%= link_to "Edit email / password", edit_user_registration_path, :class => "nav-link" %>
-            </li>
-
-					<% else %>
-						<li class="nav-item m-1">
-							<%= link_to "Sign in", new_user_session_path, :class => "nav-link" %>
-						</li>
-
-						<li class="nav-item m-1">
-							<%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
-						</li>
-
-					<% end %>
-          
-			</ul>
-
-		</div>
+  <div class="collapse navbar-collapse" id="Navbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%=events_path%>">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= new_event_path %>">Add Event</a>
+      </li>
+      <li class="nav-item">
+      <div class="dropdown">
+            <% if user_signed_in? %>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon Profil</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="<%=user_path(current_user)%>">Détails profil</a>              
+                <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-confirm="Êtes-vous sûr ?" data-method="DELETE" >Disconnect</a></p>   
+              </div>
+            <% else %>
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se connecter/S'inscrire</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/users/sign_up">Sign Up</a>              
+                <a class="dropdown-item" href="/users/sign_in">Sign In</a>              
+              </div>
+            <% end %>
+      </div>
+      </li>
+    </ul>
+  </div>
 </nav>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
