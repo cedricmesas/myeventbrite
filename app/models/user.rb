@@ -16,6 +16,7 @@ class User < ApplicationRecord
     has_many :organised_events, foreign_key: 'organizer', class_name: 'Event'
     
     private
+    
     def welcome_send
         UserMailer.welcome_email(self).deliver_now
     end

@@ -1,43 +1,57 @@
-<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container my-5">
+    <%# ALERTE %>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+    <% end %>
+</div>
+
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">Hello, guy !</h1>
-            <p>Bienvenu sur le site My Fucking Eventbrite !</p>
+            <p>Bienvenue sur le site My Fucking Eventbrite !</p>
         </div>
     </div>
 
-    <div class="container">
-    <% @events.each do |event| %>
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-            
-                <h2><%= event.title %></h2>
-                <p><%= event.duration %></p>
-                <p><%= event.location %></p>
-                <p><a class="btn btn-secondary" href="#" role="button"><%= link_to "Show", event %>View details &raquo;</a></p>
-            </div>
-        </div>
-    <p id="notice"><%= notice %></p>
-                <p><%= link_to "Edit", edit_event_path(event) %></p>
-                <p><%= link_to "Destroy", event, method: :delete, data: { confirm: "Are you sure?" } %></p>
+
+<h1>Liste des événements</h1>
+    <ul class="row">
+        <% @events.all.each do |e| %>
+            <li>
+                <h5 class="card-title">
+                    <%= event.title %>
+                </h5>
+                <p class="card-text text-truncate">
+                    <%= event.description %>
+                </p>
+                <div class="card-text">
+                    <span class="text-muted">Date: </span>
+                        <%= event.start_date.to_date.strftime("%d/%m/%Y") %>
+                </div>
+                        <div class="card-text">
+                            <span class="text-muted">Durée : </span>
+                            <%= event.duration %>
+                        </div>
+                        <div class="card-text">
+                            <span class="text-muted">Prix : </span>
+                            <%= event.price %>
+                        </div>
+                        <div class="card-text">
+                            <span class="text-muted">Lieu : </span>
+                            <%= event.location %>
+                        </div>
+                        <div class="card-text">
+                            <span class="text-muted">Organisateur : </span>
+                            <%= User.find(event.organizer_id).first_name %> 
+                            <%= User.find(event.organizer_id).last_name %>
+                        </div>
+                        <p class="mt-3">
+                            <%= link_to "Détails", event_path(event.id), class: "btn btn-outline-primary btn-sm" %>
+                        </p>
+                    </div>
+                </div>
+            </li>
         <% end %>
-<br>
-
-<div class="container">
-    <div class="row">
-    <% @events.each do |event| %> 
-    <div class="col-sm-6 card-deck">
-    <div class="card mb-3" style="width: 20rem; text-align: center">
-        <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Admin :<%= User.find_by(id:event.user_id).first_name %></h6>
-                <p class="card-text"><%= event.description %></p>
-                <p class="card-text">Start Date : <%= event.start_date %></p>            
-                <a href="<%= event_path(event.id) %>" class="card-link btn btn-dark">Show</a>
-        </div>
-    </div>
-    </div>
-    <% end %>   
-    </div>
+    </ul>
 </div>

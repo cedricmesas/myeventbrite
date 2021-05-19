@@ -1,19 +1,44 @@
-<h1>Nouvel évènement</h1>
+<div class="container my-5">
+    <h1>Créer un événement</h1>
 
-<form > 
-  <%= form_for @event, url: {action: "create"} do |f| %>
-  <br>
-    Title
-    <div class="form_group"><%= f.text_field :title %></div>
-    Description : 
-    <div class="form_group"><%= f.text_area :description %></div>
-    Prix : 
-    <div class="form_group"><%= f.number_field :price %></div>
-    Durée :
-    <div class="form_group"><%= f.number_field :duration %></div>
-    Location : 
-    <div class="form_group"><%= f.text_field :title %></div>
-
-    <div class="form_group"><%= f.submit "Create", class: "btn btn-default btn-primary"%></div>
+    <%# ALERTE %>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
     <% end %>
-</form>
+    <%# FORMULAIRE %>
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <%#<div class="form-group mt-3">
+            <%#= label_tag 'Date' %>
+            <%#= text_field_tag 'start_date', '', required: true, class: 'form-control' %>
+        <%#</div>%>
+        <div class="form-group mt-3">
+            <%= label_tag 'Durée' %>
+            <%= text_field_tag 'duration', '', required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group mt-3">
+            <%= label_tag 'Titre' %>
+            <%= text_field_tag 'title', '', required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= label_tag 'Description' %>
+            <%= text_area_tag 'description', '', required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group mt-3">
+            <%= label_tag 'Prix' %>
+            <%= text_field_tag 'price', '', required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group mt-3">
+            <%= label_tag 'Lieu' %>
+            <%= text_field_tag 'location', '', required: true, class: 'form-control' %>
+        </div>
+        <div class="form-group mt-3">
+            <%= submit_tag "Envoyer", class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+
+    <p class="mt-3">
+        <%= link_to "Accueil", events_path, class: "btn btn-primary" %>
+    </p>
+</div>

@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
-    before_action :auth_user?
-
-    def show
-        @user = current_user
+    before_action :authenticate_user!, only: [:index]
+  
+    def index
+        @users = User.all
     end
-
+  
+    def show
+        @user = User.find(params[:id])
+    end
+  
     private
     
-    def auth_user?
-        unless User.find(params[:id]) == current_user
-            redirect_to events_path, alert: "T'es pas au bon endroit !"
+    def authenticate_user
+        unless current_user
+            flash[:danger] = "Please log in."
+            redirect_to new_session_path
         end
     end
 end

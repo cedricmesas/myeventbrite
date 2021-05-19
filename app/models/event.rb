@@ -11,15 +11,8 @@ class Event < ApplicationRecord
     belongs_to :organizer, class_name: 'User'
     
 
-    def end_date
-        self.start_date + self.duration*60
-    end
-    
-    private
-    
-    def mult_5_and_positive?
-        return true if self.duration % 5 == 0 && self.duration > 0
-
-        false
+    def duration_positive_and_multiple_of_five
+        errors.add(:duration, "must be postive and multiple of 5") if
+            !duration.positive? and (duration % 5 == 0)
     end
 end
