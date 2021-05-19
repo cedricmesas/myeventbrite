@@ -1,15 +1,15 @@
 class AttendancesController < ApplicationController
   def new
-    @user = User.first
-    @event = Event.first
+    @user = params[:user]
+    @event = params[:event]
     @amount = @event.price
     @stripe_amount = (@amount * 100).to_i
   end
 
   def create
     # Before the rescue, at the beginning of the method
-    @user = User.first
-    @event = Event.first
+    @user = params[:user]
+    @event = params[:event]
     @amount = @event.price
     @stripe_amount = (@amount * 100).to_i
   
