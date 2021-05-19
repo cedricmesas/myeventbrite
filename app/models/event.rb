@@ -10,10 +10,16 @@ class Event < ApplicationRecord
     has_many :users, through: :attendances
     belongs_to :organizer, class_name: 'User'
     
+
+    def end_date
+        self.start_date + self.duration*60
+    end
+    
     private
     
     def mult_5_and_positive?
         return true if self.duration % 5 == 0 && self.duration > 0
+
         false
     end
 end
