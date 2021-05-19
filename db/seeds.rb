@@ -8,7 +8,7 @@
 require "date"
 require 'faker'
 
-Participation.delete_all
+Attendance.delete_all
 Event.delete_all
 User.delete_all
 
@@ -22,7 +22,7 @@ User.delete_all
 end
 
 10.times do
-    Event.create!(
+    Event.create(
     start_date: DateTime.now, 
     title: "YDNKJS", 
     price: 1, 
@@ -33,7 +33,7 @@ end
 end
 
 10.times do
-    Participation.create!(
+    Attendance.create!(
     event: Event.all.sample, 
     user_id: User.all.sample.id, 
     stripe_customer_id: Faker::Lorem.characters(number: 10))
