@@ -1,14 +1,12 @@
 class Attendance < ApplicationRecord
-    after_create :inscription_email
+    after_create :participation_send
 
     validates :stripe_customer_id, presence: true
     
     belongs_to :user
     belongs_to :event
     
-    private
-    
-    def inscription_email
-        UserMailer.event_inscription_email(self.user, self.event).deliver_now
+    def participation_send
+        ParticipationMailer.participate_email(self.attendee, self).deliver_now
     end
 end

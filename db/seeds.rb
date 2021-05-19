@@ -33,7 +33,7 @@ end
 end
 
 10.times do
-    Attendance.create!(
+    Participation.create!(
     event: Event.all.sample, 
     user_id: User.all.sample.id, 
     stripe_customer_id: Faker::Lorem.characters(number: 10))

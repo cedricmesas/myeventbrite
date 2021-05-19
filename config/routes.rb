@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'orders#new'
+  resources :orders, only: [:new, :create]
   devise_for :users
   root 'events#index'
   resources :events
